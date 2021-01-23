@@ -1,0 +1,64 @@
+body{
+    background: url(../img/Cemex-1024x576.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.main-section{
+    margin: 0 auto;
+    margin-top: 25%;
+    padding: 0;
+}
+
+.modal-content{     
+    background-color: rgb(153, 16, 16);
+    opacity: .95;
+    padding: 0 20px;    
+}
+
+.user-img{
+margin-top: 0px;
+margin-bottom: 35px;         
+}
+
+.user-img{
+    width: 100px;
+    height: 100px;
+}
+
+.user-group{
+    margin-top: -50px;
+    margin-bottom: 35px;     
+}
+
+.form-group input{
+height: 50px;
+font-size: 18px;
+border: 0;
+padding-left: 40px;
+}
+
+.form-group::before{
+    font-family: "Font Awesome\ 5 Free";
+    position: absolute;
+    left: 28px;
+    font-size: 22px;
+    padding-top: 4px; 
+}
+
+.form-group#user-group::before{
+    content: "\f007";
+}
+
+.form-group#contrasena-group::before{
+    content: "\f023";
+}
+
+button{
+    width: 60%;
+    margin: 5px 0 25px; 
+}
+
+.forgot{
+    padding: 30px 0; 
+}
+

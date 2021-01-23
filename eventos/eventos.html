@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css"> -->
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">CRUD</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="login.html">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registro.html">Registrar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contrasena.html">Olvidé mi contraseña</a>
+        </li>
+        
+          </div>
+        </li>
+      </ul> 
+    </div>
+  </nav>  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 py-5">
+      <input type="text" class="form-control" placeholder="Buscar" id="buscar">  
+      </div>
+      <div class="py-5">
+        <button type="button" onclick="buscarEvento()" class="btn btn-info"><i class="fas fa-search"></i> </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fas fa-user-plus"></i> </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Fecha de reservación:</label>
+                    <input type="text" class="form-control" id="fec_res">
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Desde:</label>
+                    <input type="text" class="form-control" id="desde">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Hasta:</label>
+                    <input type="text" class="form-control" id="hasta">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Personas:</label>
+                    <input type="text" class="form-control" id="personas">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Comentarios:</label>
+                    <textarea class="form-control" id="comentarios"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         
+        
+               <button type="button" onclick="registrar()" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="modaleditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Fecha de reservación:</label>
+                    <input type="text" class="form-control" id="fec_res_ed">
+                    <input type="text" class="form-control" id="idevento" >
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Desde:</label>
+                    <input type="text" class="form-control" id="desde_ed">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Hasta:</label>
+                    <input type="text" class="form-control" id="hasta_ed">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Personas:</label>
+                    <input type="text" class="form-control" id="personas_ed">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Comentarios:</label>
+                    <textarea class="form-control" id="comentarios_ed"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         
+        
+               <button type="button" onclick="editar()" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+                
+      </div>
+      <div class="col-md-8 py-3">
+        <h2>Eventos</h2>      
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Fecha de reservación</th>
+                  <th>Desde</th>
+                  <th>Hasta</th>
+                  <th>Personas</th>
+                  <th>Comentarios</th>
+                  <th>Fecha</th>
+                  <th>Estatus</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody id="contenedorResultados">
+                <!--<tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                 <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>-->
+              </tbody>
+            </table>
+          </div>
+          </div>
+    </div>
+    
+        
+      
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>    
+      <!--<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>-->
+      <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+      <script src="js/eventos.js"></script>
+</body>
+</html>
